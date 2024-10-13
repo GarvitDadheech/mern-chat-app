@@ -6,7 +6,15 @@ const userRoutes = require("./routes/userRoutes");
 dotenv.config();
 connectDB();
 
-
 const app = express();
 app.use(express.json());
 app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
+
+const PORT = process.env.PORT;
+
+const server = app.listen(
+  PORT,
+  console.log(`Server running on PORT ${PORT}...`)
+);
